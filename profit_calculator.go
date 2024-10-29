@@ -18,12 +18,21 @@ func main() {
 	fmt.Print("Tax Rate: ")
 	fmt.Scan(&taxRate)
 
-	ebt := revenue - expenses
-	profit := ebt * (1 - taxRate/100)
-	ratio := ebt / profit
+	ebt, profit, ratio := profitCalculator(revenue, expenses, taxRate)
 
 	fmt.Println(ebt)
 	fmt.Println(profit)
 	fmt.Println(ratio)
 
+}
+
+func printme(text string) {
+	fmt.Print(text)
+}
+
+func profitCalculator(revenue, expenses, taxRate float64) (float64, float64, float64) {
+	ebt := revenue - expenses
+	profit := ebt * (1 - taxRate/100)
+	ratio := ebt / profit
+	return ebt, profit, ratio
 }
