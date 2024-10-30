@@ -1,25 +1,26 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
 func main() {
 
-	revenue, err := getUserInput("Revenue: ")
-	if err != nil || revenue <= 0 {
-		fmt.Println("Invalid input provided")
-		return
-	}
-	expenses, err := getUserInput("Expenses: ")
-	if err != nil || expenses <= 0 {
-		fmt.Println("Invalid input provided")
-		return
-	}
+	revenue, err1 := getUserInput("Revenue: ")
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	return
+	// }
+	expenses, err2 := getUserInput("Expenses: ")
+	// if err != nil{
+	// 	fmt.Println(err)
+	// 	return
+	// }
 
-	taxRate, err := getUserInput("Tax Rate: ")
-	if err != nil || taxRate <= 0 {
-		fmt.Println("Invalid input provided")
+	taxRate, err3 := getUserInput("Tax Rate: ")
+	if err1 != nil || err2 != nil || err3 != nil {
+		fmt.Println(err1)
 		return
 	}
 
@@ -34,11 +35,11 @@ func main() {
 func getUserInput(infoText string) (float64, error) {
 	var userInput float64
 	fmt.Print(infoText)
-	_, err := fmt.Scan(&userInput)
-	if err != nil {
-		return 0, err
-	}
+	fmt.Scan(&userInput)
 
+	if userInput <= 0 {
+		return 0, errors.New("value must be positive number")
+	}
 	return userInput, nil
 }
 
