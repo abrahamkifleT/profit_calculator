@@ -7,20 +7,20 @@ import (
 
 func main() {
 
-	revenue, err1 := getUserInput("Revenue: ")
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	return
-	// }
-	expenses, err2 := getUserInput("Expenses: ")
-	// if err != nil{
-	// 	fmt.Println(err)
-	// 	return
-	// }
+	revenue, err := getUserInput("Revenue: ")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	expenses, err := getUserInput("Expenses: ")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
-	taxRate, err3 := getUserInput("Tax Rate: ")
-	if err1 != nil || err2 != nil || err3 != nil {
-		fmt.Println(err1)
+	taxRate, err := getUserInput("Tax Rate: ")
+	if err != nil {
+		fmt.Println(err)
 		return
 	}
 
